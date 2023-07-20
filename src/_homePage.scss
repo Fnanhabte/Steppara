@@ -1,0 +1,921 @@
+
+@mixin display-grid($gap) {
+   display: grid;
+   grid-template-columns: repeat(20, 200px);
+   gap: $gap;
+}
+
+@mixin F-sizes($size,$name, $space){
+   font-size: $size;
+   color: #181818;
+   text-transform: uppercase;
+   font-family: $name;
+   letter-spacing: $space;
+}
+
+
+$F-colors: (
+   "Dimblack" : #181818,
+   "lightblack" : #181818a8,
+   "white" : ghostwhite,
+   "lightgrey" : #f8f8ffcd,
+   "black" : black,
+   "empty" : transparent
+);
+
+$bg-color: (
+   "Dimblack" : #181818,
+   "white" : ghostwhite,
+   "empty" : transparent,
+   "teal" : teal,
+   "red" : red
+);
+
+@mixin display-flex($direction,$position, $base, $gap,$grow) {
+   display: flex;
+   justify-content: $position;
+   flex-flow: $direction;
+   flex-basis: $base;
+   gap: $gap;
+   flex-grow: $grow;
+}
+
+@mixin maxwidth($fill,$maxcontent){
+   width: $fill;
+   height: $maxcontent;
+}
+
+#section1_images{
+   @include maxwidth(100%,300vh );
+   position: relative;
+   top: 100vh;
+   scroll-padding: 4em;
+
+   &::-webkit-scrollbar {
+      width: 0;
+   }
+
+
+   .section-slide1{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+
+
+      .list-wrapper1{
+         @include maxwidth(100%, 0vh );
+         @include display-flex(row wrap,flex-end,100% ,0px ,1 );
+         position: fixed;
+         padding: 3rem 2rem;
+         color: map-get($F-colors , "white" );
+         top: 0;
+         z-index: 999;
+         box-sizing: border-box;
+         background: transparent;
+
+         .menu-wrapper-one {
+            display: none;
+         }
+
+
+         .logo {
+            flex-basis: 30%;
+            flex-grow: 1;
+            & > li {
+               list-style: none;
+               .logo-steppara{
+                  position: relative;
+                  & > a {
+                     position: relative;
+                     display: block;
+                     margin-left: 1rem;
+                     background: url(./assets/stepparalogopng.png)no-repeat left top / contain border-box;
+                     @include maxwidth(100%, 260px);
+                     transform: translateY(-3.4rem);
+                  }
+
+               }
+            }
+
+         }
+
+         .Menu-bar {
+            position: relative;
+            @include display-flex(row nowrap,flex-start ,100% , 1.5rem,0);
+            padding: 1rem;
+            flex-basis: 10%;
+            align-items: flex-end;
+            z-index: 3000;
+
+             & > li {
+               list-style: none;
+               cursor: pointer;
+               & > a {
+                  white-space: nowrap;
+                  @include F-sizes(14px,Antonio ,1.5px );
+                  @include linkdecor;
+                  color: map-get($F-colors,"white");
+               }
+
+
+               &:hover > a {
+                  color: map-get($F-colors,"lightgrey");
+               }
+
+
+
+               & > .input-wrapper{
+                  input[id="search"]{
+                     background: map-get($bg-color, "empty" );
+                     border: none;
+                     border-bottom: 1px solid ghostwhite;
+                     padding-bottom: 6px;
+                     padding: 5px 0;
+
+                     caret-color: orangered;
+
+                     &::placeholder {
+                        @include F-sizes(17px,Antonio ,0px );
+                        color: map-get($F-colors,"white");
+                     }
+
+                     &:focus {
+                       outline: none;
+                       @include F-sizes(17px,Antonio ,0px );
+                       color: map-get($F-colors,"white");
+                     }
+                  }
+
+                  input[type="search"]::-webkit-search-decoration,
+                  input[type="search"]::-webkit-search-cancel-button,
+                  input[type="search"]::-webkit-search-results-button,
+                  input[type="search"]::-webkit-search-results-decoration { display: none; }
+               }
+
+            }
+
+         }
+
+
+         & > .router-home {
+            padding: 10px 1rem;
+            box-sizing: border-box;
+            @include display-flex(row wrap,space-between,100% ,0px ,1 );
+            flex-basis: 100%;
+            height: 30px;
+            & > .list-names {
+               .names-list {
+                  position: relative;
+                  display: block;
+                  @include F-sizes(16px,Antonio , 0);
+                  transform: translateX(-80rem);
+               }
+               @keyframes comeIn {
+                  0%{
+                     opacity: 0;
+                  }
+                  50%{
+                     opacity: 1;
+                  }
+                  100% {
+                     opacity: 1;
+                     transform: translateX(0);
+                  }
+               }
+            }
+            & > .right-slide {
+               background: url(./icon/iconmonstr-angel-right-thin-240.png)no-repeat center center / contain border-box;
+               padding: .65rem;
+               cursor: pointer;
+               fill: white;
+               fill-rule: white;
+               display: none;
+
+               &:hover {
+                  transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+                  transform:translateX(5px);
+               }
+            }
+
+         }
+
+      }
+
+
+
+
+      .galley-wrapper {
+         position: sticky;
+         background:map-get($bg-color, "empty" );
+         top: 0;
+         cursor: pointer;
+         & > a {
+            & > .gallery-1 {
+               @include maxwidth(100%, 100vh );
+               background: url(./assets/woman/IMAGE-landscape-default-fill-19306745-46a0-449e-aab1-478c51598651-default_0.jpg)no-repeat center center / cover border-box;
+               cursor: pointer;
+            }
+
+         }
+      }
+   }
+   .section-slide2{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+      top: -190vh;
+
+      .galley-wrapper {
+         position: sticky;
+         top: 0;
+         & > .gallery-2 {
+            @include maxwidth(100%, 100vh );
+            background: url(./assets/woman/IMAGE-landscape-fill-0ebcfa4f-36d5-4578-9535-e33e7bfdaee7-default_0.jpg)no-repeat center center / cover border-box;
+         }
+      }
+   }
+
+   .section-slide3{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+      @include maxwidth(100%,100vh );
+      top: -360vh;
+
+      .galley-wrapper {
+         position: sticky;
+         top: 0;
+         & > .gallery-3 {
+            @include maxwidth(100%, 100vh);
+            background: url(./assets/kids/IMAGE-landscape-default-fill-148d7fa2-99d8-445b-95b0-610b2808c96e-default_0.jpg)no-repeat center center / cover border-box;
+         }
+      }
+   }
+
+   .section-slide4{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+      @include maxwidth(100%,100vh );
+      top: -520vh;
+
+
+      .galley-wrapper {
+         position: sticky;
+         top: 0;
+         & > .gallery-4 {
+            @include maxwidth(100%, 100vh);
+            & > .gif-video-woman3{
+               flex-basis: 100%;
+               position: relative;;
+               width: 100%;
+               height: 100vh;
+
+               & > #beauty-video3{
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  object-position: left;
+                  position: relative;
+                  z-index: 999999999999;
+                  position: absolute;
+                  top: 0;
+               }
+            }
+
+         }
+
+
+      }
+   }
+   .section-slide5{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+      @include maxwidth(100%,100vh );
+      top: -650vh;
+
+      .galley-wrapper {
+         position: sticky;
+         top: 0;
+         & > .gallery-5 {
+            @include maxwidth(100%, 100vh);
+            background: darkgrey;
+            background: url(./assets/men/1889022406_6_1_1.jpg)no-repeat center center / cover border-box;
+         }
+      }
+   }
+   .section-slide6{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+      @include maxwidth(100%,100vh );
+      top: -840vh;
+
+      .galley-wrapper {
+         position: sticky;
+         background: map-get($bg-color, "empty" );
+         top: 0;
+         & > .gallery-6 {
+            @include maxwidth(100%, 100vh);
+            background: url(./assets/home/IMAGE-landscape-fill-3c165d21-204d-40ee-b104-c73910887aee-default_0.jpg)no-repeat center center / cover border-box;
+
+         }
+      }
+   }
+
+   .section-slide7{
+      background:map-get($bg-color, "empty" );
+      position: relative;
+      @include maxwidth(100%,100vh );
+      top: -950vh;
+
+      .galley-wrapper {
+         position: sticky;
+         top: 0;
+         background: ghostwhite;
+         & > .gallery-7 {
+            @include maxwidth(100%, 100vh);
+            background: url(./assets/perfume/perfume.png)no-repeat center center / cover border-box;
+
+         }
+      }
+   }
+   .section-slide8{
+      background:map-get($bg-color, "white" );
+      position: relative;
+      @include maxwidth(100%,100vh );
+      top: -1050vh;
+
+      .galley-wrapper {
+         position: sticky;
+         top: 0;
+         background: url(./assets/woman/steppara-woman.jpeg)no-repeat center center / cover border-box;
+         & > .gallery-8 {
+            @include maxwidth(100%, 100vh);
+            background: url(./assets/woman/SVG-landscape-fill-f0585aa7-56fd-42a7-b089-1ba531b71c21-default.svg)no-repeat center center / cover border-box;
+
+         }
+      }
+   }
+
+
+
+   .section-slide9 {
+      @include maxwidth(100%,100vh);
+      background: map-get($bg-color, "Dimblack" );
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      top: -1150vh;
+      z-index: 1000;
+
+
+      .footer-wrapper {
+         @include maxwidth(100%,100vh);
+         box-sizing: border-box;
+         position: sticky;
+         top: 0;
+         bottom: 0;
+
+         & > .footer{
+            @include maxwidth(100%,100vh);
+            background: map-get($bg-color, "empty" );
+            @include display-flex(row wrap,flex-start ,100% ,0px ,1 );
+            box-sizing: border-box;
+            overflow: hidden;
+
+
+            & > .footer1 {
+               flex-basis: 100%;
+               background: map-get($bg-color, "Dimblack" );
+
+            }
+
+            .animate{
+               height: 50px;
+               & > h1 {
+                  margin: 0;
+                  padding: 0;
+                  white-space: nowrap;
+                  @include F-sizes(3rem,bloverly ,3px );
+                  color: map-get($F-colors, "white" );
+                  animation: infinit 30s linear infinite;
+                  transition: animation .10s linear;
+
+                  & > .spin {
+                     display: inline-block;
+                     animation: spin 10s linear infinite;
+                     transition: animation .5s linear;
+                     @include maxwidth(40px,46px )
+
+                  }
+
+
+                 @keyframes spin {
+
+                  from {
+                     transform: rotate(0);
+                  }
+                  to {
+                     transform: rotate(360deg);
+                  }
+
+                 }
+               }
+
+               @keyframes infinit {
+
+                  from {
+                     transform: translate(0);
+                  }
+                  to {
+                     transform: translate(-2000px);
+                  }
+
+               }
+
+            }
+
+
+            .copyright{
+               @include maxwidth(100%, 100vh);
+               background: map-get($bg-color, "Dimblack" );
+               box-sizing: border-box;
+               padding-top: 3rem;
+               padding-bottom: 10rem;
+               background: linear-gradient(#00000000,#000,#000);
+
+               & > ul {
+
+                  & > li {
+                     margin-bottom: 5px;
+                     list-style: none;
+                     font-weight: 400;
+                     @include F-sizes(14px,Antonio ,0px);
+                     @include linkdecor;
+                     white-space: nowrap;
+                     color: map-get($F-colors,"white");
+                     cursor: pointer;
+
+                     &:hover {
+                        color: #c59403;
+                        transition: all .2s linear;
+                        transform: translateX(5px);
+                     }
+                  }
+               }
+
+               .yearLogo {
+                  @include display-flex(row wrap,center ,100% ,0px ,1 );
+                  @include maxwidth(100%, 30vh);
+                  align-items: flex-end;
+                  & > .year {
+                     position: relative;
+                     display: inline-block;
+                     font-weight: 400;
+                     @include F-sizes(12.5px,Antonio ,0px);
+                     color: map-get($F-colors,"white" );
+                  }
+
+               }
+
+            }
+
+
+
+
+         }
+      }
+
+
+   }
+
+   .section-slide1,.section-slide2,.section-slide3,
+   .section-slide4,.section-slide5,.section-slide6,
+    .section-slide7,.section-slide8
+   {
+     position: relative;
+     @include maxwidth(100%,300vh );
+   }
+
+
+
+}
+
+
+@media all and (min-width:901px) and (max-width:1250px){
+   body {
+      #section1_images {
+         .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+            transform: translateY(-2rem);
+         }
+      }
+   }
+
+
+}
+@media all and (min-width:701px) and (max-width:900px){
+
+      body {
+
+         #section1_images{
+
+            .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+               transform: translateY(-1.4rem);
+            }
+
+           }
+      }
+
+
+
+
+
+}
+
+///⬆️ STEPARA LOGO
+
+
+@media all and (min-width:0px) and (max-width:700px){
+
+
+   #main_header {
+      & > .video-wrapper {
+         @include maxwidth(100%,100% );
+         background: map-get($bg-color,"white" );
+         position: absolute;
+         top: 0;
+         z-index: 1;
+         user-select: none;
+
+         & > video[id="video"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+         }
+      }
+   }
+
+   body {
+        #section1_images{
+
+
+         .section-slide1 .list-wrapper1 .Menu-bar {
+            display: none;
+          }
+
+          .section-slide1 .list-wrapper1 .menu-wrapper-one {
+            display: flex;
+            flex-flow: column;
+            background: transparent;
+            flex-basis: 10%;
+            padding-top: .60rem;
+            gap: 10px;
+
+            & > .MENU-one {
+               display: block;
+               width: 80px;
+               border-bottom: 1px solid ghostwhite;
+               cursor: pointer;
+            }
+
+            .cover {
+               width: 80px;
+               height: 35px;
+               background: transparent;
+               position: relative;
+               top: -40px;
+               cursor: pointer;
+            }
+
+          }
+
+         .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+            transform: translateY(-1.4rem);
+            margin-left: 0;
+            @include maxwidth(100%, 260px);
+
+         }
+
+
+         .section-slide1 {
+
+            .galley-wrapper {
+               & > a {
+                  & > .gallery-1 {
+                     @include maxwidth(100%, 100vh );
+                     background: url(./assets/woman/ccf60a162170061.63d136e263356.jpg)no-repeat center center / cover border-box;
+                     cursor: pointer;
+                  }
+
+               }
+            }
+
+         }
+         .section-slide2 {
+
+            .galley-wrapper {
+               position: sticky;
+               top: 0;
+               & > .gallery-2 {
+                  @include maxwidth(100%, 100vh);
+                  background: url(./assets/perfume/00203e167538475.642afaf11b618.gif)no-repeat center center / cover border-box;
+               }
+            }
+
+         }
+         .section-slide3 {
+
+            .galley-wrapper {
+               position: sticky;
+               top: 0;
+               & > .gallery-3 {
+                  @include maxwidth(100%, 100vh);
+                  background: url(./assets/kids/f14b9a168139005.643572b181d43.jpg)no-repeat center center / cover border-box;
+               }
+            }
+
+         }
+         .section-slide4 {
+
+            .galley-wrapper {
+               & > .gallery-4 {
+                  @include maxwidth(100%, 100vh);
+                  background: url(./assets/woman/3ebde0165816915.640e2bb7f2b08.jpg)no-repeat center center / cover border-box;
+
+               }
+            }
+
+         }
+
+         .section-slide6 {
+
+            .galley-wrapper {
+               & > .gallery-6 {
+                  @include maxwidth(100%, 100vh);
+                  background: url(./assets/men/img20.jpg)no-repeat center center / cover border-box;
+
+               }
+            }
+
+         }
+
+         .section-slide7 {
+            .galley-wrapper {
+
+               & > .gallery-7 {
+                  @include maxwidth(100%, 100vh);
+                  background: url(./assets/perfume/de694d167538475.642afa9f1e236.png)no-repeat center center / cover border-box;
+
+               }
+            }
+
+         }
+         .section-slide8 {
+
+            .galley-wrapper {
+               position: sticky;
+               top: 0;
+               background: url(./assets/woman/f01999975.jpg)no-repeat center center / cover border-box;
+
+            }
+
+         }
+
+         .section-slide10 {
+            top: -450vh;
+         }
+
+        }
+
+        #grid1 {
+         #menu {
+            @include maxwidth(100%, max-content );
+            background: map-get($bg-color, "white" );
+            box-sizing: border-box;
+            position: fixed;
+            z-index: 8900;
+            transform: translateX(-100rem);
+            display: block;
+
+
+            @keyframes menu-open{
+               from{
+                  opacity: 0;
+               }
+               to{
+                  transform: translateX(0);
+                  opacity: 1;
+               }
+            }
+            @keyframes menu-x{
+               0% {
+                  opacity: 1;
+               }
+               50%{
+                  opacity: 1;
+               }
+               100%{
+                  transform: translateX(-40rem);
+                  opacity: 0;
+               }
+
+            }
+
+            .menu-lists {
+               @include maxwidth(100%, max-content );
+               @include display-flex(row nowrap , flex-start,100% ,20px ,1 );
+               padding: 5rem 2rem 10px 2rem;
+               box-sizing: border-box;
+               overflow-x: scroll;
+               &::-webkit-scrollbar {
+                  display: none
+               }
+               & > h3 {
+                  @include F-sizes(13px,jerindemo ,0px);
+                  font-weight: 100;
+                  color: map-get($F-colors,"black");
+                  cursor: pointer;
+                  padding-bottom: 10px;
+                  margin: 0;
+                  position: relative;
+                  z-index: 900;
+               }
+            }
+
+            .menu-lists {
+               @include maxwidth(100%, max-content );
+               @include display-flex(column nowrap , flex-end,100% ,4px ,1 );
+               align-items: flex-end;
+               padding: 5rem 7rem 10px 2rem;
+               box-sizing: border-box;
+               position: fixed;
+
+               & > .cancel {
+                  display: block;
+                  width: 59px;
+                  border-bottom: 1px solid black;
+                  cursor: pointer;
+                  background: black;
+                  padding: .20rem;
+               }
+
+               .cover-cancel {
+
+                     position: relative;
+                     width: 59px;
+                     height: 52px;
+                     background: map-get($bg-color, "empty" );
+                     top: -41px;
+                     cursor: pointer;
+
+               }
+               .rotate1 {
+                  transform: rotate(-45deg);
+               }
+
+               .rotate4  {
+                  transform: rotate(45deg)translateY(-4px);
+               }
+
+
+            }
+            .mobile {
+               @include maxwidth(100%, 800px);
+               background: map-get($bg-color, "white" );
+               @include display-flex(row nowrap ,flex-start,100% ,0rem ,0 );
+               padding: 5rem 30px;
+               box-sizing: border-box;
+               transform: translateX(-100rem);
+               position: absolute;
+               overflow-y: scroll;
+               z-index: 1;
+
+
+               &::-webkit-scrollbar {
+                  width: 2px;
+               }
+
+               &::-webkit-scrollbar-thumb {
+                  background: orangered;
+               }
+
+
+               @keyframes menu-links{
+                  from{
+                     opacity: 0;
+                  }
+                  to{
+                     transform: translateX(0);
+                     opacity: 1;
+                  }
+               }
+               & > ul {
+                  padding: 2px 0;
+                  box-sizing: border-box;
+                  width: 60%;
+                  position: relative;
+                  z-index: 8888888;
+
+                  .Men {
+                     @include maxwidth(100%, 100vh);
+                     overflow-y: scroll;
+                     @include display-flex(column nowrap , flex-start,100% ,2rem ,0 );
+
+
+
+                     & > li {
+                        list-style: none;
+                        & > a {
+                           font-weight: 100;
+                           @include F-sizes(19px,Antonio ,0px);
+                           @include linkdecor;
+                           white-space: nowrap;
+                           color: map-get($F-colors,"black");
+                           margin-bottom: 15px;
+                           &:hover {
+                              color: orangered;
+                           }
+                        }
+                     }
+                  }
+
+               }
+             }
+
+
+           }
+        }
+   }
+
+}
+
+@media all and (min-width:0px) and (max-width:410px){
+   #main_header  #header .header-wrapper .list-wrapper .logo > li .logo-steppara > a {
+      transform: translateY(-2rem);
+      @include maxwidth(230px, 230px);
+      margin-left: 0rem;
+    }
+
+    body > #grid1 {
+     & > .video-wrapper {
+      & > video::-webkit-media-controls-panel {
+         display: none !important;
+      }
+
+     }
+    }
+
+
+     .mobile-menu {
+
+      .menu-lists {
+         @include maxwidth(100%, max-content );
+         @include display-flex(row nowrap , flex-start,100% ,20px ,1 );
+         padding: 5rem 2rem 10px 2rem;
+         box-sizing: border-box;
+         overflow-x: scroll;
+         &::-webkit-scrollbar {
+            display: none
+         }
+
+      }
+
+
+     }
+
+     #section_1-images{
+
+      .section-slide7 {
+
+         .galley-wrapper {
+
+            & > .gallery-7 {
+
+               will-change: filter, transform;
+               transform: rotate(0deg);
+            }
+         }
+
+      }
+      .section-slide8 {
+         top: -250vh;
+      }
+
+      .section-slide9 {
+         @include maxwidth(100%,100vh);
+         top: -350vh;
+         .galley-wrapper {
+            @include maxwidth(100%, max-content);
+
+         }
+      }
+
+      .section-slide10 {
+         top: -450vh;
+      }
+     }
+
+}
+

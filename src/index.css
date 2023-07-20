@@ -1,13 +1,6292 @@
+@font-face {
+  font-family: bloverly;
+  src: url(./fonts/bloverly.otf);
+}
+@font-face {
+  font-family: Antonio;
+  src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+  font-family: sf;
+  src: url(./fonts/sf-compact-display-light.otf);
+}
+@font-face {
+  font-family: jerindemo;
+  src: url(./fonts/jerindemo.ttf);
+}
 body {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 1200px;
+  background: #181818;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-columns: 100% 100%;
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.mobile-menu {
+  display: none;
 }
+
+main[id=main_header] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: transparent;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+main[id=main_header] header[id=header] {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  z-index: 1300;
+}
+main[id=main_header] header[id=header] .header-wrapper {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: transparent;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3000;
+}
+main[id=main_header] > .video-wrapper {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+main[id=main_header] > .video-wrapper > video[id=video] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: 1;
+}
+
+#menu {
+  width: 515px;
+  height: 100vh;
+  background: ghostwhite;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 199900;
+  transform: translateX(-400rem);
+  display: none;
+  z-index: 1000000;
+}
+@keyframes menu-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes menu-x {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40rem);
+    opacity: 0;
+  }
+}
+#menu .menu-lists {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column nowrap;
+  flex-basis: 100%;
+  gap: 4px;
+  flex-grow: 1;
+  align-items: flex-end;
+  padding: 5rem 2rem 10px 2rem;
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+#menu .menu-lists > .cancel {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  background: black;
+  padding: 0.2rem;
+}
+#menu .menu-lists .cover-cancel {
+  position: relative;
+  width: 59px;
+  height: 52px;
+  background: transparent;
+  top: -41px;
+  cursor: pointer;
+}
+#menu .menu-lists .rotate1 {
+  transform: rotate(-45deg);
+}
+#menu .menu-lists .rotate4 {
+  transform: rotate(45deg) translateY(-4px);
+}
+#menu .mobile {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 0rem;
+  flex-grow: 0;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  transform: translateX(-100rem);
+  position: absolute;
+  z-index: 8888;
+}
+#menu .mobile::-webkit-scrollbar {
+  width: 2px;
+}
+#menu .mobile::-webkit-scrollbar-thumb {
+  background: orangered;
+}
+@keyframes menu-links {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+#menu .mobile > ul {
+  padding: 2px 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+}
+#menu .mobile > ul #menu-links {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+#menu .mobile > ul #menu-links > li {
+  list-style: none;
+  font-weight: 100;
+  font-size: 15px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  font-weight: 100;
+  white-space: nowrap;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+#menu .mobile > ul #menu-links > li:hover {
+  transform: translateX(7px);
+  transition: all 0.3s linear;
+  color: #787777;
+}
+#menu .mobile > ul #menu-links::-webkit-scrollbar {
+  width: 2px;
+}
+#menu .mobile > ul #menu-links::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+
+#section1_images {
+  width: 100%;
+  height: 300vh;
+  position: relative;
+  top: 100vh;
+  scroll-padding: 4em;
+}
+#section1_images::-webkit-scrollbar {
+  width: 0;
+}
+#section1_images .section-slide1 {
+  background: transparent;
+  position: relative;
+}
+#section1_images .section-slide1 .list-wrapper1 {
+  width: 100%;
+  height: 0vh;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  position: fixed;
+  padding: 3rem 2rem;
+  color: ghostwhite;
+  top: 0;
+  z-index: 999;
+  box-sizing: border-box;
+  background: transparent;
+}
+#section1_images .section-slide1 .list-wrapper1 .menu-wrapper-one {
+  display: none;
+}
+#section1_images .section-slide1 .list-wrapper1 .logo {
+  flex-basis: 30%;
+  flex-grow: 1;
+}
+#section1_images .section-slide1 .list-wrapper1 .logo > li {
+  list-style: none;
+}
+#section1_images .section-slide1 .list-wrapper1 .logo > li .logo-steppara {
+  position: relative;
+}
+#section1_images .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+  position: relative;
+  display: block;
+  margin-left: 1rem;
+  background: url(./assets/stepparalogopng.png) no-repeat left top/contain border-box;
+  width: 100%;
+  height: 260px;
+  transform: translateY(-3.4rem);
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 1.5rem;
+  flex-grow: 0;
+  padding: 1rem;
+  flex-basis: 10%;
+  align-items: flex-end;
+  z-index: 3000;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li {
+  list-style: none;
+  cursor: pointer;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > a {
+  white-space: nowrap;
+  font-size: 14px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  color: black;
+  color: ghostwhite;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li:hover > a {
+  color: rgba(248, 248, 255, 0.8039215686);
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[id=search] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid ghostwhite;
+  padding-bottom: 6px;
+  padding: 5px 0;
+  caret-color: orangered;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[id=search]::-moz-placeholder {
+  font-size: 17px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[id=search]::placeholder {
+  font-size: 17px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[id=search]:focus {
+  outline: none;
+  font-size: 17px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[type=search]::-webkit-search-decoration,
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[type=search]::-webkit-search-cancel-button,
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[type=search]::-webkit-search-results-button,
+#section1_images .section-slide1 .list-wrapper1 .Menu-bar > li > .input-wrapper input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+#section1_images .section-slide1 .list-wrapper1 > .router-home {
+  padding: 10px 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  flex-basis: 100%;
+  height: 30px;
+}
+#section1_images .section-slide1 .list-wrapper1 > .router-home > .list-names .names-list {
+  position: relative;
+  display: block;
+  font-size: 16px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0;
+  transform: translateX(-80rem);
+}
+@keyframes comeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+#section1_images .section-slide1 .list-wrapper1 > .router-home > .right-slide {
+  background: url(./icon/iconmonstr-angel-right-thin-240.png) no-repeat center center/contain border-box;
+  padding: 0.65rem;
+  cursor: pointer;
+  fill: white;
+  fill-rule: white;
+  display: none;
+}
+#section1_images .section-slide1 .list-wrapper1 > .router-home > .right-slide:hover {
+  transition: all 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: translateX(5px);
+}
+#section1_images .section-slide1 .galley-wrapper {
+  position: sticky;
+  background: transparent;
+  top: 0;
+  cursor: pointer;
+}
+#section1_images .section-slide1 .galley-wrapper > a > .gallery-1 {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/woman/IMAGE-landscape-default-fill-19306745-46a0-449e-aab1-478c51598651-default_0.jpg) no-repeat center center/cover border-box;
+  cursor: pointer;
+}
+#section1_images .section-slide2 {
+  background: transparent;
+  position: relative;
+  top: -190vh;
+}
+#section1_images .section-slide2 .galley-wrapper {
+  position: sticky;
+  top: 0;
+}
+#section1_images .section-slide2 .galley-wrapper > .gallery-2 {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/woman/IMAGE-landscape-fill-0ebcfa4f-36d5-4578-9535-e33e7bfdaee7-default_0.jpg) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide3 {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: -360vh;
+}
+#section1_images .section-slide3 .galley-wrapper {
+  position: sticky;
+  top: 0;
+}
+#section1_images .section-slide3 .galley-wrapper > .gallery-3 {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/kids/IMAGE-landscape-default-fill-148d7fa2-99d8-445b-95b0-610b2808c96e-default_0.jpg) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide4 {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: -520vh;
+}
+#section1_images .section-slide4 .galley-wrapper {
+  position: sticky;
+  top: 0;
+}
+#section1_images .section-slide4 .galley-wrapper > .gallery-4 {
+  width: 100%;
+  height: 100vh;
+}
+#section1_images .section-slide4 .galley-wrapper > .gallery-4 > .gif-video-woman3 {
+  flex-basis: 100%;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+#section1_images .section-slide4 .galley-wrapper > .gallery-4 > .gif-video-woman3 > #beauty-video3 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+  position: relative;
+  z-index: 999999999999;
+  position: absolute;
+  top: 0;
+}
+#section1_images .section-slide5 {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: -650vh;
+}
+#section1_images .section-slide5 .galley-wrapper {
+  position: sticky;
+  top: 0;
+}
+#section1_images .section-slide5 .galley-wrapper > .gallery-5 {
+  width: 100%;
+  height: 100vh;
+  background: darkgrey;
+  background: url(./assets/men/1889022406_6_1_1.jpg) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide6 {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: -840vh;
+}
+#section1_images .section-slide6 .galley-wrapper {
+  position: sticky;
+  background: transparent;
+  top: 0;
+}
+#section1_images .section-slide6 .galley-wrapper > .gallery-6 {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/home/IMAGE-landscape-fill-3c165d21-204d-40ee-b104-c73910887aee-default_0.jpg) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide7 {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: -950vh;
+}
+#section1_images .section-slide7 .galley-wrapper {
+  position: sticky;
+  top: 0;
+  background: ghostwhite;
+}
+#section1_images .section-slide7 .galley-wrapper > .gallery-7 {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/perfume/perfume.png) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide8 {
+  background: ghostwhite;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  top: -1050vh;
+}
+#section1_images .section-slide8 .galley-wrapper {
+  position: sticky;
+  top: 0;
+  background: url(./assets/woman/steppara-woman.jpeg) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide8 .galley-wrapper > .gallery-8 {
+  width: 100%;
+  height: 100vh;
+  background: url(./assets/woman/SVG-landscape-fill-f0585aa7-56fd-42a7-b089-1ba531b71c21-default.svg) no-repeat center center/cover border-box;
+}
+#section1_images .section-slide9 {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  top: -1150vh;
+  z-index: 1000;
+}
+#section1_images .section-slide9 .footer-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer {
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer > .footer1 {
+  flex-basis: 100%;
+  background: #181818;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .animate {
+  height: 50px;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 3rem;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: bloverly;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 30s linear infinite;
+  transition: animation 0.1s linear;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2000px);
+  }
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .copyright {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+  background: linear-gradient(rgba(0, 0, 0, 0), #000, #000);
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .copyright > ul > li {
+  margin-bottom: 5px;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+  cursor: pointer;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .copyright > ul > li:hover {
+  color: #c59403;
+  transition: all 0.2s linear;
+  transform: translateX(5px);
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .copyright .yearLogo {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  width: 100%;
+  height: 30vh;
+  align-items: flex-end;
+}
+#section1_images .section-slide9 .footer-wrapper > .footer .copyright .yearLogo > .year {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: #181818;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+#section1_images .section-slide1, #section1_images .section-slide2, #section1_images .section-slide3,
+#section1_images .section-slide4, #section1_images .section-slide5, #section1_images .section-slide6,
+#section1_images .section-slide7, #section1_images .section-slide8 {
+  position: relative;
+  width: 100%;
+  height: 300vh;
+}
+
+@media all and (min-width: 901px) and (max-width: 1250px) {
+  body #section1_images .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+    transform: translateY(-2rem);
+  }
+}
+@media all and (min-width: 701px) and (max-width: 900px) {
+  body #section1_images .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+    transform: translateY(-1.4rem);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 700px) {
+  #main_header > .video-wrapper {
+    width: 100%;
+    height: 100%;
+    background: ghostwhite;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+  }
+  #main_header > .video-wrapper > video[id=video] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    z-index: 1;
+  }
+  body #section1_images .section-slide1 .list-wrapper1 .Menu-bar {
+    display: none;
+  }
+  body #section1_images .section-slide1 .list-wrapper1 .menu-wrapper-one {
+    display: flex;
+    flex-flow: column;
+    background: transparent;
+    flex-basis: 10%;
+    padding-top: 0.6rem;
+    gap: 10px;
+  }
+  body #section1_images .section-slide1 .list-wrapper1 .menu-wrapper-one > .MENU-one {
+    display: block;
+    width: 80px;
+    border-bottom: 1px solid ghostwhite;
+    cursor: pointer;
+  }
+  body #section1_images .section-slide1 .list-wrapper1 .menu-wrapper-one .cover {
+    width: 80px;
+    height: 35px;
+    background: transparent;
+    position: relative;
+    top: -40px;
+    cursor: pointer;
+  }
+  body #section1_images .section-slide1 .list-wrapper1 .logo > li .logo-steppara > a {
+    transform: translateY(-1.4rem);
+    margin-left: 0;
+    width: 100%;
+    height: 260px;
+  }
+  body #section1_images .section-slide1 .galley-wrapper > a > .gallery-1 {
+    width: 100%;
+    height: 100vh;
+    background: url(./assets/woman/ccf60a162170061.63d136e263356.jpg) no-repeat center center/cover border-box;
+    cursor: pointer;
+  }
+  body #section1_images .section-slide2 .galley-wrapper {
+    position: sticky;
+    top: 0;
+  }
+  body #section1_images .section-slide2 .galley-wrapper > .gallery-2 {
+    width: 100%;
+    height: 100vh;
+    background: url(./assets/perfume/00203e167538475.642afaf11b618.gif) no-repeat center center/cover border-box;
+  }
+  body #section1_images .section-slide3 .galley-wrapper {
+    position: sticky;
+    top: 0;
+  }
+  body #section1_images .section-slide3 .galley-wrapper > .gallery-3 {
+    width: 100%;
+    height: 100vh;
+    background: url(./assets/kids/f14b9a168139005.643572b181d43.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1_images .section-slide4 .galley-wrapper > .gallery-4 {
+    width: 100%;
+    height: 100vh;
+    background: url(./assets/woman/3ebde0165816915.640e2bb7f2b08.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1_images .section-slide6 .galley-wrapper > .gallery-6 {
+    width: 100%;
+    height: 100vh;
+    background: url(./assets/men/img20.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1_images .section-slide7 .galley-wrapper > .gallery-7 {
+    width: 100%;
+    height: 100vh;
+    background: url(./assets/perfume/de694d167538475.642afa9f1e236.png) no-repeat center center/cover border-box;
+  }
+  body #section1_images .section-slide8 .galley-wrapper {
+    position: sticky;
+    top: 0;
+    background: url(./assets/woman/f01999975.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1_images .section-slide10 {
+    top: -450vh;
+  }
+  body #grid1 #menu {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: ghostwhite;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 8900;
+    transform: translateX(-100rem);
+    display: block;
+  }
+  @keyframes menu-open {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes menu-x {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-40rem);
+      opacity: 0;
+    }
+  }
+  body #grid1 #menu .menu-lists {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 20px;
+    flex-grow: 1;
+    padding: 5rem 2rem 10px 2rem;
+    box-sizing: border-box;
+    overflow-x: scroll;
+  }
+  body #grid1 #menu .menu-lists::-webkit-scrollbar {
+    display: none;
+  }
+  body #grid1 #menu .menu-lists > h3 {
+    font-size: 13px;
+    color: #181818;
+    text-transform: uppercase;
+    font-family: jerindemo;
+    letter-spacing: 0px;
+    font-weight: 100;
+    color: black;
+    cursor: pointer;
+    padding-bottom: 10px;
+    margin: 0;
+    position: relative;
+    z-index: 900;
+  }
+  body #grid1 #menu .menu-lists {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: column nowrap;
+    flex-basis: 100%;
+    gap: 4px;
+    flex-grow: 1;
+    align-items: flex-end;
+    padding: 5rem 7rem 10px 2rem;
+    box-sizing: border-box;
+    position: fixed;
+  }
+  body #grid1 #menu .menu-lists > .cancel {
+    display: block;
+    width: 59px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    background: black;
+    padding: 0.2rem;
+  }
+  body #grid1 #menu .menu-lists .cover-cancel {
+    position: relative;
+    width: 59px;
+    height: 52px;
+    background: transparent;
+    top: -41px;
+    cursor: pointer;
+  }
+  body #grid1 #menu .menu-lists .rotate1 {
+    transform: rotate(-45deg);
+  }
+  body #grid1 #menu .menu-lists .rotate4 {
+    transform: rotate(45deg) translateY(-4px);
+  }
+  body #grid1 #menu .mobile {
+    width: 100%;
+    height: 800px;
+    background: ghostwhite;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 0rem;
+    flex-grow: 0;
+    padding: 5rem 30px;
+    box-sizing: border-box;
+    transform: translateX(-100rem);
+    position: absolute;
+    overflow-y: scroll;
+    z-index: 1;
+  }
+  body #grid1 #menu .mobile::-webkit-scrollbar {
+    width: 2px;
+  }
+  body #grid1 #menu .mobile::-webkit-scrollbar-thumb {
+    background: orangered;
+  }
+  @keyframes menu-links {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  body #grid1 #menu .mobile > ul {
+    padding: 2px 0;
+    box-sizing: border-box;
+    width: 60%;
+    position: relative;
+    z-index: 8888888;
+  }
+  body #grid1 #menu .mobile > ul .Men {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    flex-basis: 100%;
+    gap: 2rem;
+    flex-grow: 0;
+  }
+  body #grid1 #menu .mobile > ul .Men > li {
+    list-style: none;
+  }
+  body #grid1 #menu .mobile > ul .Men > li > a {
+    font-weight: 100;
+    font-size: 19px;
+    color: #181818;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    color: black;
+    margin-bottom: 15px;
+  }
+  body #grid1 #menu .mobile > ul .Men > li > a:hover {
+    color: orangered;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 410px) {
+  #main_header #header .header-wrapper .list-wrapper .logo > li .logo-steppara > a {
+    transform: translateY(-2rem);
+    width: 230px;
+    height: 230px;
+    margin-left: 0rem;
+  }
+  body > #grid1 > .video-wrapper > video::-webkit-media-controls-panel {
+    display: none !important;
+  }
+  .mobile-menu .menu-lists {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 20px;
+    flex-grow: 1;
+    padding: 5rem 2rem 10px 2rem;
+    box-sizing: border-box;
+    overflow-x: scroll;
+  }
+  .mobile-menu .menu-lists::-webkit-scrollbar {
+    display: none;
+  }
+  #section_1-images .section-slide7 .galley-wrapper > .gallery-7 {
+    will-change: filter, transform;
+    transform: rotate(0deg);
+  }
+  #section_1-images .section-slide8 {
+    top: -250vh;
+  }
+  #section_1-images .section-slide9 {
+    width: 100%;
+    height: 100vh;
+    top: -350vh;
+  }
+  #section_1-images .section-slide9 .galley-wrapper {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  #section_1-images .section-slide10 {
+    top: -450vh;
+  }
+}
+@font-face {
+  font-family: Antonio;
+  src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+  font-family: jerindemo;
+  src: url(./fonts/jerindemo.ttf);
+}
+@font-face {
+  font-family: Tusker;
+  src: url(./fonts/TuskerGrotesk-2800Super.otf);
+}
+@font-face {
+  font-family: Tusker2;
+  src: url(./fonts/TuskerGrotesk-3500Medium.ttf);
+}
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.woman-section {
+  width: 100%;
+  height: 100vh;
+}
+.woman-section section[id=section1] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 0;
+}
+.woman-section section[id=section1] header {
+  padding: 10px;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+}
+.woman-section section[id=section1] header > .nav-wrapper {
+  width: 100%;
+  height: 50px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 1px;
+  flex-grow: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li {
+  padding-top: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  flex-basis: 100%;
+  gap: 5px;
+  flex-grow: 0;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li > .MENU {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid black;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li .cover {
+  position: relative;
+  width: 59px;
+  height: 30px;
+  background: transparent;
+  top: -30px;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=links] {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-light=icon] {
+  background: url(./icon/iconmonstr-idea-5.svg) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-bag=icon] {
+  background: url(./icon/iconmonstr-briefcase-2.svg) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > .off {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  right: 4.9rem;
+  top: 20px;
+  display: block;
+  z-index: 8888;
+  cursor: pointer;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul > li {
+  list-style: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 400px;
+  height: 400px;
+  background: ghostwhite;
+  z-index: 99999;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a {
+  list-style: none;
+  text-decoration: none;
+  color: #181818;
+  cursor: pointer;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a > li {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 500px;
+  height: 400px;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p {
+  position: relative;
+  top: -150px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.woman-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p .noun {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+  font-style: italic;
+}
+.woman-section section[id=section1] header > .nav-wrapper .cloth-filter {
+  padding: 0rem 2.6rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.woman-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper, .woman-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon {
+  background: transparent;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+.woman-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper > .filter, .woman-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon > .filter {
+  display: block;
+  color: ghostwhite;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.woman-section section[id=section1] .steppara-banner {
+  align-items: center;
+  width: 100%;
+  height: 720px;
+  background: transparent;
+  position: relative;
+  background: url(./assets/denim/IMAGE-landscape-default-fill-19306745-46a0-449e-aab1-478c51598651-default_0.jpg) no-repeat center center/cover border-box;
+}
+.woman-section section[id=section1] .steppara-banner .banner {
+  width: 100%;
+  height: 700px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+  align-items: flex-end;
+  z-index: 100;
+  position: relative;
+}
+.woman-section section[id=section1] .steppara-banner .banner p {
+  padding-left: 2rem;
+  flex-basis: 50%;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+  max-width: 600px;
+  line-height: 1.9em;
+}
+.woman-section section[id=section1] #main-content-column {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: hidden;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 33333;
+  overflow: hidden;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .woman1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .woman1 > .img {
+  max-width: 100%;
+  height: 700px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 1rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H-scroll::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H-scroll:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H_scroll_woman {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 6rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H_scroll_woman:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+  width: 465px;
+  height: 700px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 50px;
+  flex-grow: 0;
+  padding: 0 0rem;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: ghostwhite;
+}
+.woman-section section[id=section1] #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.woman-section .animate {
+  height: -moz-max-content;
+  height: max-content;
+  background: #08323c;
+  overflow: hidden;
+}
+.woman-section .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Tusker2;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 60s linear infinite;
+  transition: animation 0.1s linear;
+  font-weight: 400;
+}
+.woman-section .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2900px);
+  }
+}
+.woman-section .footer-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  flex-basis: 100%;
+}
+.woman-section .footer-wrapper > .footer {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.woman-section .footer-wrapper > .footer > .footer1 {
+  flex-basis: 100%;
+  background: #181818;
+}
+.woman-section .footer-wrapper > .footer .copyright {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+}
+.woman-section .footer-wrapper > .footer .copyright > ul > li {
+  margin-bottom: 5px;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+}
+.woman-section .footer-wrapper > .footer .yearLogo {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.woman-section .footer-wrapper > .footer .yearLogo > .year {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+.woman-section #menu {
+  width: 515px;
+  height: 100vh;
+  background: ghostwhite;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 199900;
+  transform: translateX(-400rem);
+  display: none;
+  z-index: 1000000;
+}
+@keyframes menu-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes menu-x {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40rem);
+    opacity: 0;
+  }
+}
+.woman-section #menu .menu-lists {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column nowrap;
+  flex-basis: 100%;
+  gap: 4px;
+  flex-grow: 1;
+  align-items: flex-end;
+  padding: 5rem 2rem 10px 2rem;
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+.woman-section #menu .menu-lists > .cancel {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  background: black;
+  padding: 0.2rem;
+}
+.woman-section #menu .menu-lists .cover-cancel {
+  position: relative;
+  width: 59px;
+  height: 52px;
+  background: transparent;
+  top: -41px;
+  cursor: pointer;
+}
+.woman-section #menu .menu-lists .rotate1 {
+  transform: rotate(-45deg);
+}
+.woman-section #menu .menu-lists .rotate4 {
+  transform: rotate(45deg) translateY(-4px);
+}
+.woman-section #menu .mobile {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 0rem;
+  flex-grow: 0;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  transform: translateX(-100rem);
+  position: absolute;
+  z-index: 8888;
+}
+.woman-section #menu .mobile::-webkit-scrollbar {
+  width: 2px;
+}
+.woman-section #menu .mobile::-webkit-scrollbar-thumb {
+  background: orangered;
+}
+@keyframes menu-links {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.woman-section #menu .mobile > ul {
+  padding: 2px 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+}
+.woman-section #menu .mobile > ul #menu-links {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.woman-section #menu .mobile > ul #menu-links > li {
+  list-style: none;
+  font-weight: 100;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  font-weight: 100;
+  white-space: nowrap;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.woman-section #menu .mobile > ul #menu-links > li > a {
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  margin-bottom: 15px;
+}
+.woman-section #menu .mobile > ul #menu-links > li > a:hover {
+  color: orangered;
+}
+.woman-section #menu .mobile > ul #menu-links > li:hover {
+  transform: translateX(7px);
+  transition: all 0.3s linear;
+  color: #787777;
+}
+.woman-section #menu .mobile > ul #menu-links::-webkit-scrollbar {
+  width: 2px;
+}
+.woman-section #menu .mobile > ul #menu-links::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+
+@media all and (min-width: 1101px) and (max-width: 1300px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+  }
+}
+@media all and (min-width: 701px) and (max-width: 1100px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > .log {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 2rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 500px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 700px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 350px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 230px;
+    height: 350px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #menu {
+    width: 100%;
+    height: 100vh;
+  }
+  body #menu .mobile {
+    transform: translateX(-40rem);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 440px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 4px;
+    flex-grow: 0;
+    padding: 0;
+    padding-right: 1rem;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=menu] li {
+    align-items: flex-start;
+  }
+  body #section1 .steppara-banner {
+    background: url(./assets/denim/Banner.png) no-repeat center center/cover border-box;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: #d4d4dd;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 200px;
+    height: 300px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+}
+@font-face {
+  font-family: Antonio;
+  src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+  font-family: jerindemo;
+  src: url(./fonts/jerindemo.ttf);
+}
+@font-face {
+  font-family: Tusker;
+  src: url(./fonts/TuskerGrotesk-2800Super.otf);
+}
+@font-face {
+  font-family: Tusker2;
+  src: url(./fonts/TuskerGrotesk-3500Medium.ttf);
+}
+html > body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+}
+html > body::-webkit-scrollbar {
+  display: none;
+}
+
+.men-section section[id=section1] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 0;
+}
+.men-section section[id=section1] header {
+  padding: 10px;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+}
+.men-section section[id=section1] header > .nav-wrapper {
+  width: 100%;
+  height: 130px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 1px;
+  flex-grow: 0;
+  background: #181818;
+  box-sizing: border-box;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li {
+  padding-top: 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  flex-basis: 100%;
+  gap: 5px;
+  flex-grow: 0;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li > .MENU {
+  display: block;
+  width: 69px;
+  border-bottom: 1.5px solid #d5d2d2;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li .cover {
+  position: relative;
+  width: 59px;
+  height: 30px;
+  background: transparent;
+  top: -30px;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=links] {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-light=icon] {
+  background: url(./icon/iconmonstr-idea-5.svg) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-bag=icon] {
+  background: url(./icon/iconmonstr-briefcase-2.svg) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > .off {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  right: 4.9rem;
+  top: 20px;
+  display: block;
+  z-index: 8888;
+  cursor: pointer;
+}
+.men-section section[id=section1] header > .nav-wrapper ul > li {
+  list-style: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 400px;
+  height: 400px;
+  background: ghostwhite;
+  z-index: 99999;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a {
+  list-style: none;
+  text-decoration: none;
+  color: #181818;
+  cursor: pointer;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a > li {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 500px;
+  height: 400px;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p {
+  position: relative;
+  top: -150px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.men-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p .noun {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+  font-style: italic;
+}
+.men-section section[id=section1] header > .nav-wrapper .cloth-filter {
+  padding: 0rem 2.6rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.men-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper, .men-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon {
+  background: transparent;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+.men-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper > .filter, .men-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon > .filter {
+  display: block;
+  color: ghostwhite;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.men-section section[id=section1] .steppara-banner {
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  background: transparent;
+  position: relative;
+}
+.men-section section[id=section1] .steppara-banner > video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+  height: 100%;
+}
+.men-section section[id=section1] .steppara-banner .banner {
+  width: 100%;
+  height: 700px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+  align-items: flex-end;
+  z-index: 100;
+  position: relative;
+}
+.men-section section[id=section1] .steppara-banner .banner p {
+  padding-left: 2rem;
+  flex-basis: 50%;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+  max-width: 600px;
+  line-height: 1.9em;
+}
+.men-section section[id=section1] .cloth-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem;
+  box-sizing: border-box;
+  color: #8a8258;
+}
+.men-section section[id=section1] .cloth-info > span {
+  display: block;
+  font-size: 13.2px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.men-section section[id=section1] .cloth-info p {
+  font-size: 13.2px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 640px;
+}
+.men-section section[id=section1] main[id=main-content-column] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: hidden;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 33333;
+  overflow: hidden;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .woman1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .woman1 > .img {
+  max-width: 100%;
+  height: 700px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 1rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 6rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman #women-video22 {
+  width: 465px;
+  height: 700px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: #181818;
+}
+.men-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price > span {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  font-weight: 100;
+  color: #bcbcc0;
+}
+.men-section section[id=section1] .long-sleeve {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0;
+  flex-grow: 0;
+}
+.men-section section[id=section1] .long-sleeve > .sleev-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem 4rem;
+  box-sizing: border-box;
+  color: ghostwhite;
+  flex-basis: 100%;
+}
+.men-section section[id=section1] .long-sleeve > .sleev-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.men-section section[id=section1] .long-sleeve > .sleev-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 600px;
+}
+.men-section section[id=section1] .long-sleeve .sleev-rows {
+  flex-basis: 100%;
+  padding-left: 4rem;
+  padding-bottom: 5rem;
+}
+.men-section section[id=section1] .bomber-row {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(6, 600px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  gap: 0rem;
+  padding-right: 1rem;
+  background: #181818;
+}
+.men-section section[id=section1] .bomber-row .col1 {
+  padding-left: 4rem;
+  background: #181818;
+  padding: 5rem 4rem;
+}
+.men-section section[id=section1] .bomber-row .col1 .H-scroll {
+  background: #181818;
+}
+.men-section section[id=section1] .bomber-row .col1 .H-scroll .img {
+  max-width: 100%;
+  height: 600px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-padding-inline-start: 4rem;
+}
+.men-section section[id=section1] .bomber-row .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: #181818;
+}
+.men-section section[id=section1] .bomber-row .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+.men-section #menu {
+  width: 515px;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 199900;
+  transform: translateX(-400rem);
+  display: none;
+  z-index: 1000000;
+}
+@keyframes menu-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes menu-x {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40rem);
+    opacity: 0;
+  }
+}
+.men-section #menu .menu-lists {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column nowrap;
+  flex-basis: 100%;
+  gap: 4px;
+  flex-grow: 1;
+  align-items: flex-end;
+  padding: 5rem 2rem 10px 2rem;
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+.men-section #menu .menu-lists > .cancel {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid ghostwhite;
+  cursor: pointer;
+  background: ghostwhite;
+  padding: 0.2rem;
+}
+.men-section #menu .menu-lists .cover-cancel {
+  position: relative;
+  width: 59px;
+  height: 52px;
+  background: transparent;
+  top: -41px;
+  cursor: pointer;
+}
+.men-section #menu .menu-lists .rotate1 {
+  transform: rotate(-45deg);
+}
+.men-section #menu .menu-lists .rotate4 {
+  transform: rotate(45deg) translateY(-4px);
+}
+.men-section #menu .mobile {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 0rem;
+  flex-grow: 0;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  transform: translateX(-100rem);
+  position: absolute;
+  z-index: 8888;
+}
+.men-section #menu .mobile::-webkit-scrollbar {
+  width: 2px;
+}
+.men-section #menu .mobile::-webkit-scrollbar-thumb {
+  background: orangered;
+}
+@keyframes menu-links {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.men-section #menu .mobile > ul {
+  padding: 2px 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+}
+.men-section #menu .mobile > ul #menu-links {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.men-section #menu .mobile > ul #menu-links > li {
+  list-style: none;
+  font-weight: 100;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  font-weight: 100;
+  white-space: nowrap;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.men-section #menu .mobile > ul #menu-links > li > a {
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+  margin-bottom: 15px;
+}
+.men-section #menu .mobile > ul #menu-links > li > a:hover {
+  color: orangered;
+}
+.men-section #menu .mobile > ul #menu-links > li:hover {
+  transform: translateX(7px);
+  transition: all 0.3s linear;
+  color: #787777;
+}
+.men-section #menu .mobile > ul #menu-links::-webkit-scrollbar {
+  width: 2px;
+}
+.men-section #menu .mobile > ul #menu-links::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.men-section .animate {
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  overflow: hidden;
+}
+.men-section .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Tusker2;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 60s linear infinite;
+  transition: animation 0.1s linear;
+  font-weight: 400;
+}
+.men-section .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2900px);
+  }
+}
+.men-section footer {
+  width: 100%;
+  height: 100vh;
+}
+.men-section footer .footer-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+}
+.men-section footer .footer-wrapper > .footer {
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.men-section footer .footer-wrapper > .footer > .footer1 {
+  flex-basis: 100%;
+  background: #181818;
+}
+.men-section footer .footer-wrapper > .footer .animate {
+  height: 50px;
+}
+.men-section footer .footer-wrapper > .footer .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: bloverly;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 30s linear infinite;
+  transition: animation 0.1s linear;
+}
+.men-section footer .footer-wrapper > .footer .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2000px);
+  }
+}
+.men-section footer .footer-wrapper > .footer .copyright {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.7960784314), #000, #000);
+}
+.men-section footer .footer-wrapper > .footer .copyright > ul > li {
+  margin-bottom: 5px;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+  cursor: pointer;
+}
+.men-section footer .footer-wrapper > .footer .copyright > ul > li:hover {
+  color: #c59403;
+  transition: all 0.2s linear;
+  transform: translateX(5px);
+}
+.men-section footer .footer-wrapper > .footer .copyright .yearLogo {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  width: 100%;
+  height: 30vh;
+  align-items: flex-end;
+}
+.men-section footer .footer-wrapper > .footer .copyright .yearLogo > .year {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+
+@media all and (min-width: 1101px) and (max-width: 1300px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+  }
+}
+@media all and (min-width: 701px) and (max-width: 1100px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > .log {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 2rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 500px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 336px;
+    height: 500px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+    box-sizing: border-box;
+    color: ghostwhite;
+    flex-basis: 100%;
+  }
+  body #section1 .long-sleeve > .sleev-info > span {
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve > .sleev-info p {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    max-width: 600px;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 4rem;
+    padding-bottom: 5rem;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 700px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 350px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 230px;
+    height: 350px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: ghostwhite;
+    display: flex;
+    justify-content: flex- start;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 0rem;
+    padding-bottom: 0rem;
+  }
+  body #section1 .long-sleeve .sleev-rows .col1 .H-scroll .img {
+    max-width: 100%;
+    height: 600px;
+  }
+  body #section1 .bomber-row .col1 {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 .H-scroll {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price > span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    color: black;
+  }
+  body #menu {
+    width: 100%;
+    height: 100vh;
+  }
+  body #menu .mobile {
+    transform: translateX(-40rem);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 440px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header {
+    background: #181818;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 4px;
+    flex-grow: 0;
+    padding: 0;
+    padding-right: 1rem;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=menu] li {
+    align-items: flex-start;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=menu] li > .MENU {
+    display: block;
+    width: 59px;
+    border-bottom: 1px solid ghostwhite;
+  }
+  body #section1 header .nav-wrapper ul > li {
+    list-style: none;
+    color: ghostwhite;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    cursor: pointer;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] {
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 35px;
+    flex-grow: 0;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > [data-light=icon] {
+    background: url(./icon/iconmonstr-idea-6-240.png) no-repeat center center/cover border-box;
+    padding: 0.7rem;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > [data-bag=icon] {
+    background: url(./icon/iconmonstr-briefcase-thin-240.png) no-repeat center center/cover border-box;
+    padding: 0.7rem;
+  }
+  body #section1 .steppara-banner {
+    background: url(./assets/Jeans/img1.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: #d4d4dd;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 200px;
+    height: 300px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+}
+@font-face {
+  font-family: Antonio;
+  src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+  font-family: jerindemo;
+  src: url(./fonts/jerindemo.ttf);
+}
+@font-face {
+  font-family: Tusker;
+  src: url(./fonts/TuskerGrotesk-2800Super.otf);
+}
+@font-face {
+  font-family: Tusker2;
+  src: url(./fonts/TuskerGrotesk-3500Medium.ttf);
+}
+html > body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+}
+html > body::-webkit-scrollbar {
+  display: none;
+}
+
+.kids-section section[id=section1] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] header {
+  padding: 10px;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+}
+.kids-section section[id=section1] header > .nav-wrapper {
+  width: 100%;
+  height: 50px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 1px;
+  flex-grow: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li {
+  padding-top: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  flex-basis: 100%;
+  gap: 5px;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li > .MENU {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid ghostwhite;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li .cover {
+  position: relative;
+  width: 59px;
+  height: 30px;
+  background: transparent;
+  top: -30px;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=links] {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-light=icon] {
+  background: url(./icon/iconmonstr-idea-6-240.png) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-bag=icon] {
+  background: url(./icon/iconmonstr-briefcase-thin-240.png) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > .off {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  right: 4.9rem;
+  top: 20px;
+  display: block;
+  z-index: 8888;
+  cursor: pointer;
+}
+.kids-section section[id=section1] header > .nav-wrapper .middle-menu {
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 45px;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] header > .nav-wrapper .middle-menu > li {
+  list-style: none;
+}
+.kids-section section[id=section1] header > .nav-wrapper .middle-menu > li a {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  flex-basis: 100%;
+  color: ghostwhite;
+}
+.kids-section section[id=section1] header > .nav-wrapper .middle-menu > li a:hover {
+  color: #b8b5ae;
+  transition: 0.2s linear;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul > li {
+  list-style: none;
+  color: ghostwhite;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 400px;
+  height: 400px;
+  background: ghostwhite;
+  z-index: 99999;
+  display: none;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a {
+  list-style: none;
+  text-decoration: none;
+  color: #181818;
+  cursor: pointer;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a > li {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 500px;
+  height: 400px;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p {
+  position: relative;
+  top: -150px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.kids-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p .noun {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+  font-style: italic;
+}
+.kids-section section[id=section1] header > .nav-wrapper .cloth-filter {
+  padding: 0rem 2.6rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper, .kids-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon {
+  background: transparent;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+.kids-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper > .filter, .kids-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon > .filter {
+  display: block;
+  color: ghostwhite;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.kids-section section[id=section1] .steppara-banner {
+  align-items: center;
+  width: 100%;
+  height: 720px;
+  background: transparent;
+  position: relative;
+  background: url(./assets/kids/a80c1f165903723.640f809246d69.jpg) no-repeat center center/cover border-box;
+}
+.kids-section section[id=section1] .steppara-banner .banner {
+  width: 100%;
+  height: 700px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+  align-items: flex-end;
+  z-index: 100;
+  position: relative;
+}
+.kids-section section[id=section1] .steppara-banner .banner p {
+  padding-left: 2rem;
+  flex-basis: 50%;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+  max-width: 600px;
+  line-height: 1.9em;
+}
+.kids-section section[id=section1] .cloth-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem;
+  box-sizing: border-box;
+  color: ghostwhite;
+}
+.kids-section section[id=section1] .cloth-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.kids-section section[id=section1] .cloth-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 640px;
+}
+.kids-section section[id=section1] .long-sleeve {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] .long-sleeve > .sleev-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem 5rem;
+  box-sizing: border-box;
+  color: ghostwhite;
+  flex-basis: 100%;
+}
+.kids-section section[id=section1] .long-sleeve > .sleev-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.kids-section section[id=section1] .long-sleeve > .sleev-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 600px;
+}
+.kids-section section[id=section1] .long-sleeve .sleev-rows {
+  flex-basis: 100%;
+  padding-left: 4rem;
+  padding-bottom: 5rem;
+}
+.kids-section section[id=section1] .sec-1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0;
+  flex-grow: 0;
+  background: ghostwhite;
+  padding-bottom: 5rem;
+}
+.kids-section section[id=section1] .sec-1 > h4 {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: black;
+  font-weight: 100;
+}
+.kids-section section[id=section1] .sec-1 .img-wrap, .kids-section section[id=section1] .sec-1 .img-wrap-3 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 2rem;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] .sec-1 .img-wrap .img-sec1, .kids-section section[id=section1] .sec-1 .img-wrap-3 .img-sec1 {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  max-width: 100%;
+  height: 720px;
+  cursor: pointer;
+}
+.kids-section section[id=section1] .sec-1 .img-wrap > span, .kids-section section[id=section1] .sec-1 .img-wrap-3 > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: black;
+  display: block;
+}
+.kids-section section[id=section1] .sec-1 .img-wrap-3 {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 2rem;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] .sec-2, .kids-section section[id=section1] .sec-3 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0;
+  flex-grow: 0;
+  background: ghostwhite;
+}
+.kids-section section[id=section1] .sec-2 .img-wrap-3, .kids-section section[id=section1] .sec-3 .img-wrap-3 {
+  background: ghostwhite;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 2rem;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 1rem;
+  flex-grow: 0;
+}
+.kids-section section[id=section1] .sec-2 .img-wrap-3 .img-sec1, .kids-section section[id=section1] .sec-3 .img-wrap-3 .img-sec1 {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  max-width: 34%;
+  height: 50%;
+  cursor: pointer;
+}
+.kids-section section[id=section1] .sec-2 .img-wrap-3 > span, .kids-section section[id=section1] .sec-3 .img-wrap-3 > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: black;
+  display: block;
+}
+.kids-section section[id=section1] main[id=main-content-column], .kids-section section[id=section1] #content-column {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: hidden;
+  padding: 6rem 3rem;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section, .kids-section section[id=section1] #content-column .cloth-section {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 33333;
+  overflow: hidden;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1, .kids-section section[id=section1] #content-column .cloth-section > .col1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .kids, .kids-section section[id=section1] #content-column .cloth-section > .col1 .kids {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .kids > .img, .kids-section section[id=section1] #content-column .cloth-section > .col1 .kids > .img {
+  max-width: 100%;
+  height: 400px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 1rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H-scroll::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar-thumb, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll:hover::-webkit-scrollbar-thumb, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H-scroll:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H_scroll_woman {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 6rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar-thumb, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman:hover::-webkit-scrollbar-thumb, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H_scroll_woman:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman #women-video22, .kids-section section[id=section1] #content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+  width: 465px;
+  height: 700px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price, .kids-section section[id=section1] #content-column .cloth-section > .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 20px;
+  flex-grow: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: ghostwhite;
+}
+.kids-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price > span, .kids-section section[id=section1] #content-column .cloth-section > .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.kids-section section[id=section1] .bomber-row {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(6, 600px);
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  gap: 0rem;
+  padding-right: 1rem;
+  background: #181818;
+}
+.kids-section section[id=section1] .bomber-row .col1 {
+  padding-left: 4rem;
+  background: #181818;
+  padding: 5rem 4rem;
+}
+.kids-section section[id=section1] .bomber-row .col1 .H-scroll {
+  background: #181818;
+}
+.kids-section section[id=section1] .bomber-row .col1 .H-scroll .img {
+  max-width: 100%;
+  height: 600px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-padding-inline-start: 4rem;
+}
+.kids-section section[id=section1] .bomber-row .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: #181818;
+}
+.kids-section section[id=section1] .bomber-row .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+.kids-section .animate {
+  height: -moz-max-content;
+  height: max-content;
+  background: #08323c;
+  overflow: hidden;
+}
+.kids-section .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Tusker2;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 60s linear infinite;
+  transition: animation 0.1s linear;
+  font-weight: 400;
+}
+.kids-section .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2900px);
+  }
+}
+.kids-section .footer-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  flex-basis: 100%;
+}
+.kids-section .footer-wrapper > .footer {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.kids-section .footer-wrapper > .footer > .footer1 {
+  flex-basis: 100%;
+  background: #181818;
+}
+.kids-section .footer-wrapper > .footer .copyright {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+}
+.kids-section .footer-wrapper > .footer .copyright > ul > li {
+  margin-bottom: 5px;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+}
+.kids-section .footer-wrapper > .footer .yearLogo {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.kids-section .footer-wrapper > .footer .yearLogo > .year {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+
+@media all and (min-width: 1101px) and (max-width: 1300px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+  }
+}
+@media all and (min-width: 701px) and (max-width: 1100px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > .log {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 2rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 500px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 336px;
+    height: 500px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+    box-sizing: border-box;
+    color: ghostwhite;
+    flex-basis: 100%;
+  }
+  body #section1 .long-sleeve > .sleev-info > span {
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve > .sleev-info p {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    max-width: 600px;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 4rem;
+    padding-bottom: 5rem;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 700px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 350px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 230px;
+    height: 350px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: ghostwhite;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 0rem;
+    padding-bottom: 0rem;
+  }
+  body #section1 .long-sleeve .sleev-rows .col1 .H-scroll .img {
+    max-width: 100%;
+    height: 600px;
+  }
+  body #section1 .bomber-row .col1 {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 .H-scroll {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price > span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    color: black;
+  }
+  body #menu {
+    width: 100%;
+    height: 100vh;
+  }
+  body #menu .mobile {
+    transform: translateX(-40rem);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 440px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 4px;
+    flex-grow: 0;
+    padding: 0;
+    padding-right: 1rem;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=menu] li {
+    align-items: flex-start;
+  }
+  body #section1 .steppara-banner {
+    background: url(./assets/kids/a80c1f165903723.640f809246d69.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: #d4d4dd;
+  }
+  body #section1 .sec-1 {
+    background: #181818;
+    padding-bottom: 2px;
+  }
+  body #section1 .sec-1 > h4 {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    color: ghostwhite;
+    font-weight: 100;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 200px;
+    height: 300px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+}
+@font-face {
+  font-family: Antonio;
+  src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+  font-family: jerindemo;
+  src: url(./fonts/jerindemo.ttf);
+}
+@font-face {
+  font-family: Tusker;
+  src: url(./fonts/TuskerGrotesk-2800Super.otf);
+}
+@font-face {
+  font-family: Tusker2;
+  src: url(./fonts/TuskerGrotesk-3500Medium.ttf);
+}
+html > body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+}
+html > body::-webkit-scrollbar {
+  display: none;
+}
+
+.home-section section[id=section1] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 0;
+}
+.home-section section[id=section1] header {
+  padding: 10px;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+}
+.home-section section[id=section1] header > .nav-wrapper {
+  width: 100%;
+  height: 50px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 1px;
+  flex-grow: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li {
+  padding-top: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  flex-basis: 100%;
+  gap: 5px;
+  flex-grow: 0;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li > .MENU {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid black;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li .cover {
+  position: relative;
+  width: 59px;
+  height: 30px;
+  background: transparent;
+  top: -30px;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=links] {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-light=icon] {
+  background: url(./icon/iconmonstr-idea-5.svg) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-bag=icon] {
+  background: url(./icon/iconmonstr-briefcase-2.svg) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > .off {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  right: 4.9rem;
+  top: 20px;
+  display: block;
+  z-index: 8888;
+  cursor: pointer;
+}
+.home-section section[id=section1] header > .nav-wrapper ul > li {
+  list-style: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 400px;
+  height: 400px;
+  background: ghostwhite;
+  z-index: 99999;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a {
+  list-style: none;
+  text-decoration: none;
+  color: #181818;
+  cursor: pointer;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a > li {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 500px;
+  height: 400px;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p {
+  position: relative;
+  top: -150px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.home-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p .noun {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+  font-style: italic;
+}
+.home-section section[id=section1] header > .nav-wrapper .cloth-filter {
+  padding: 0rem 2.6rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.home-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper, .home-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon {
+  background: transparent;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+.home-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper > .filter, .home-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon > .filter {
+  display: block;
+  color: ghostwhite;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.home-section section[id=section1] .steppara-banner {
+  align-items: center;
+  width: 100%;
+  height: 720px;
+  background: transparent;
+  position: relative;
+  background: url(./assets/home/Decor_Baskets__Landingpage__0995_copy_2000x.webp) no-repeat center center/cover border-box;
+}
+.home-section section[id=section1] .steppara-banner .banner {
+  width: 100%;
+  height: 700px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+  align-items: flex-end;
+  z-index: 100;
+  position: relative;
+}
+.home-section section[id=section1] .steppara-banner .banner p {
+  padding-left: 2rem;
+  flex-basis: 50%;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+  max-width: 600px;
+  line-height: 1.9em;
+}
+.home-section section[id=section1] .cloth-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  padding: 5rem;
+  box-sizing: border-box;
+  color: black;
+}
+.home-section section[id=section1] .cloth-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.home-section section[id=section1] .cloth-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 640px;
+}
+.home-section section[id=section1] main[id=main-content-column] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: hidden;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 33333;
+  overflow: hidden;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .woman1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .woman1 > .img {
+  max-width: 100%;
+  height: 700px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 1rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 6rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman #women-video22 {
+  width: 465px;
+  height: 700px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: ghostwhite;
+}
+.home-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.home-section section[id=section1] .long-sleeve {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0;
+  flex-grow: 0;
+}
+.home-section section[id=section1] .long-sleeve > .sleev-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem 4rem;
+  box-sizing: border-box;
+  color: ghostwhite;
+  flex-basis: 100%;
+}
+.home-section section[id=section1] .long-sleeve > .sleev-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.home-section section[id=section1] .long-sleeve > .sleev-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 600px;
+}
+.home-section section[id=section1] .long-sleeve .sleev-rows {
+  flex-basis: 100%;
+  padding-left: 4rem;
+  padding-bottom: 5rem;
+}
+.home-section section[id=section1] .bomber-row {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(6, 600px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  gap: 0rem;
+  padding-right: 1rem;
+  background: #181818;
+}
+.home-section section[id=section1] .bomber-row .col1 {
+  padding-left: 4rem;
+  background: #181818;
+  padding: 5rem 4rem;
+}
+.home-section section[id=section1] .bomber-row .col1 .H-scroll {
+  background: #181818;
+}
+.home-section section[id=section1] .bomber-row .col1 .H-scroll .img {
+  max-width: 100%;
+  height: 600px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-padding-inline-start: 4rem;
+}
+.home-section section[id=section1] .bomber-row .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: #181818;
+}
+.home-section section[id=section1] .bomber-row .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+.home-section #menu {
+  width: 515px;
+  height: 100vh;
+  background: ghostwhite;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 199900;
+  transform: translateX(-400rem);
+  display: none;
+  z-index: 1000000;
+}
+@keyframes menu-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes menu-x {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40rem);
+    opacity: 0;
+  }
+}
+.home-section #menu .menu-lists {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column nowrap;
+  flex-basis: 100%;
+  gap: 4px;
+  flex-grow: 1;
+  align-items: flex-end;
+  padding: 5rem 2rem 10px 2rem;
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+.home-section #menu .menu-lists > .cancel {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  background: black;
+  padding: 0.2rem;
+}
+.home-section #menu .menu-lists .cover-cancel {
+  position: relative;
+  width: 59px;
+  height: 52px;
+  background: transparent;
+  top: -41px;
+  cursor: pointer;
+}
+.home-section #menu .menu-lists .rotate1 {
+  transform: rotate(-45deg);
+}
+.home-section #menu .menu-lists .rotate4 {
+  transform: rotate(45deg) translateY(-4px);
+}
+.home-section #menu .mobile {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 0rem;
+  flex-grow: 0;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  transform: translateX(-100rem);
+  position: absolute;
+  z-index: 8888;
+}
+.home-section #menu .mobile::-webkit-scrollbar {
+  width: 2px;
+}
+.home-section #menu .mobile::-webkit-scrollbar-thumb {
+  background: orangered;
+}
+@keyframes menu-links {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.home-section #menu .mobile > ul {
+  padding: 2px 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+}
+.home-section #menu .mobile > ul #menu-links {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.home-section #menu .mobile > ul #menu-links > li {
+  list-style: none;
+  font-weight: 100;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  font-weight: 100;
+  white-space: nowrap;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.home-section #menu .mobile > ul #menu-links > li > a {
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  margin-bottom: 15px;
+}
+.home-section #menu .mobile > ul #menu-links > li > a:hover {
+  color: orangered;
+}
+.home-section #menu .mobile > ul #menu-links > li:hover {
+  transform: translateX(7px);
+  transition: all 0.3s linear;
+  color: #787777;
+}
+.home-section #menu .mobile > ul #menu-links::-webkit-scrollbar {
+  width: 2px;
+}
+.home-section #menu .mobile > ul #menu-links::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.home-section .animate {
+  height: -moz-max-content;
+  height: max-content;
+  background: #08323c;
+  overflow: hidden;
+}
+.home-section .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Tusker2;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 60s linear infinite;
+  transition: animation 0.1s linear;
+  font-weight: 400;
+}
+.home-section .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2900px);
+  }
+}
+.home-section .footer-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  flex-basis: 100%;
+}
+.home-section .footer-wrapper > .footer {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.home-section .footer-wrapper > .footer > .footer1 {
+  flex-basis: 100%;
+  background: #181818;
+}
+.home-section .footer-wrapper > .footer .copyright {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+}
+.home-section .footer-wrapper > .footer .copyright > ul > li {
+  margin-bottom: 5px;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+}
+.home-section .footer-wrapper > .footer .yearLogo {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.home-section .footer-wrapper > .footer .yearLogo > .year {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+
+@media all and (min-width: 1101px) and (max-width: 1300px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+  }
+}
+@media all and (min-width: 701px) and (max-width: 1100px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > .log {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 2rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 500px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 336px;
+    height: 500px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+    box-sizing: border-box;
+    color: ghostwhite;
+    flex-basis: 100%;
+  }
+  body #section1 .long-sleeve > .sleev-info > span {
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve > .sleev-info p {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    max-width: 600px;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 4rem;
+    padding-bottom: 5rem;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 700px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 350px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 230px;
+    height: 350px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: ghostwhite;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 0rem;
+    padding-bottom: 0rem;
+  }
+  body #section1 .long-sleeve .sleev-rows .col1 .H-scroll .img {
+    max-width: 100%;
+    height: 600px;
+  }
+  body #section1 .bomber-row .col1 {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 .H-scroll {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price > span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    color: black;
+  }
+  body #menu {
+    width: 100%;
+    height: 100vh;
+  }
+  body #menu .mobile {
+    transform: translateX(-40rem);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 440px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 4px;
+    flex-grow: 0;
+    padding: 0;
+    padding-right: 1rem;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=menu] li {
+    align-items: flex-start;
+  }
+  body #section1 .steppara-banner {
+    background: url(./assets/home/fc9bbb165494305.64087cec1e322.jpg) no-repeat center center/cover border-box;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: #d4d4dd;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 200px;
+    height: 300px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+}
+@font-face {
+  font-family: Antonio;
+  src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+  font-family: jerindemo;
+  src: url(./fonts/jerindemo.ttf);
+}
+@font-face {
+  font-family: Tusker;
+  src: url(./fonts/TuskerGrotesk-2800Super.otf);
+}
+@font-face {
+  font-family: Tusker2;
+  src: url(./fonts/TuskerGrotesk-3500Medium.ttf);
+}
+html > body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+}
+html > body::-webkit-scrollbar {
+  display: none;
+}
+
+.beauty-section section[id=section1] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: ghostwhite;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 0;
+}
+.beauty-section section[id=section1] header {
+  padding: 10px;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+}
+.beauty-section section[id=section1] header > .nav-wrapper {
+  width: 100%;
+  height: 50px;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 1px;
+  flex-grow: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li {
+  padding-top: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  flex-basis: 100%;
+  gap: 5px;
+  flex-grow: 0;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li > .MENU {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid ghostwhite;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=menu] li .cover {
+  position: relative;
+  width: 59px;
+  height: 30px;
+  background: transparent;
+  top: -30px;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=links] {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-light=icon] {
+  background: url(./icon/iconmonstr-idea-6-240.png) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > [data-bag=icon] {
+  background: url(./icon/iconmonstr-briefcase-thin-240.png) no-repeat center center/cover border-box;
+  padding: 0.7rem;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=links] > .off {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: transparent;
+  right: 4.9rem;
+  top: 20px;
+  display: block;
+  z-index: 8888;
+  cursor: pointer;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul > li {
+  list-style: none;
+  color: ghostwhite;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 400px;
+  height: 400px;
+  background: #181818;
+  z-index: 99999;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a {
+  list-style: none;
+  text-decoration: none;
+  color: ghostwhite;
+  cursor: pointer;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a > li {
+  background: url(./assets/denim/logo.png) no-repeat center center/contain border-box;
+  width: 500px;
+  height: 400px;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p {
+  position: relative;
+  top: -150px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: none;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p > .para > small {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  font-style: italic;
+}
+.beauty-section section[id=section1] header > .nav-wrapper ul[data-nav=logo] > a p .noun {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: times;
+  letter-spacing: 0px;
+  text-transform: lowercase;
+  font-style: italic;
+}
+.beauty-section section[id=section1] header > .nav-wrapper .cloth-filter {
+  padding: 0rem 2.6rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+}
+.beauty-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper, .beauty-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon {
+  background: transparent;
+  padding: 6px 20px;
+  box-sizing: border-box;
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+.beauty-section section[id=section1] header > .nav-wrapper .cloth-filter > .filter-wrapper > .filter, .beauty-section section[id=section1] header > .nav-wrapper .cloth-filter .filter-icon > .filter {
+  display: block;
+  color: ghostwhite;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.beauty-section section[id=section1] .steppara-banner {
+  align-items: center;
+  width: 100%;
+  height: 720px;
+  background: transparent;
+  position: relative;
+  background: url(./assets/beauty/0000002531_15_1_1.jpg) no-repeat center center/cover border-box;
+}
+.beauty-section section[id=section1] .steppara-banner .banner {
+  width: 100%;
+  height: 700px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 35px;
+  flex-grow: 0;
+  align-items: flex-end;
+  z-index: 100;
+  position: relative;
+}
+.beauty-section section[id=section1] .steppara-banner .banner p {
+  padding-left: 2rem;
+  flex-basis: 50%;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: #ffffff;
+  position: relative;
+  z-index: 100;
+  max-width: 600px;
+  line-height: 1.9em;
+}
+.beauty-section section[id=section1] .cloth-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem;
+  box-sizing: border-box;
+  color: ghostwhite;
+}
+.beauty-section section[id=section1] .cloth-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.beauty-section section[id=section1] .cloth-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 640px;
+}
+.beauty-section section[id=section1] main[id=main-content-column] {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  overflow-y: hidden;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 33333;
+  overflow: hidden;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .woman1 {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .woman1 > .img {
+  max-width: 100%;
+  height: 700px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 1rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H-scroll:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(3, 500px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline-start: 3rem;
+  scroll-behavior: smooth;
+  padding-left: 6rem;
+  padding-right: 10rem;
+  box-sizing: border-box;
+  gap: 12rem;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar {
+  height: 0.3vh;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman:hover::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 .H_scroll_woman #women-video22 {
+  width: 465px;
+  height: 700px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: #181818;
+}
+.beauty-section section[id=section1] main[id=main-content-column] .cloth-section > .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+.beauty-section section[id=section1] .long-sleeve {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0;
+  flex-grow: 0;
+}
+.beauty-section section[id=section1] .long-sleeve > .sleev-info {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  padding: 5rem 4rem;
+  box-sizing: border-box;
+  color: ghostwhite;
+  flex-basis: 100%;
+}
+.beauty-section section[id=section1] .long-sleeve > .sleev-info > span {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+}
+.beauty-section section[id=section1] .long-sleeve > .sleev-info p {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+  max-width: 600px;
+}
+.beauty-section section[id=section1] .long-sleeve .sleev-rows {
+  flex-basis: 100%;
+  padding-left: 4rem;
+  padding-bottom: 5rem;
+}
+.beauty-section section[id=section1] .bomber-row {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: repeat(6, 600px);
+  justify-content: start;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  scroll-snap-align: start;
+  scroll-snap-type: x mandatory;
+  gap: 0rem;
+  padding-right: 1rem;
+  background: #181818;
+}
+.beauty-section section[id=section1] .bomber-row .col1 {
+  padding-left: 4rem;
+  background: #181818;
+  padding: 5rem 4rem;
+}
+.beauty-section section[id=section1] .bomber-row .col1 .H-scroll {
+  background: #181818;
+}
+.beauty-section section[id=section1] .bomber-row .col1 .H-scroll .img {
+  max-width: 100%;
+  height: 600px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-padding-inline-start: 4rem;
+}
+.beauty-section section[id=section1] .bomber-row .col1 > .cloth-name-price {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row;
+  flex-basis: 100%;
+  gap: 70px;
+  flex-grow: 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  background: #181818;
+}
+.beauty-section section[id=section1] .bomber-row .col1 > .cloth-name-price > span {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+.beauty-section #menu {
+  width: 515px;
+  height: 100vh;
+  background: #181818;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 199900;
+  transform: translateX(-400rem);
+  display: none;
+  z-index: 1000000;
+}
+@keyframes menu-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes menu-x {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40rem);
+    opacity: 0;
+  }
+}
+.beauty-section #menu .menu-lists {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: column nowrap;
+  flex-basis: 100%;
+  gap: 4px;
+  flex-grow: 1;
+  align-items: flex-end;
+  padding: 5rem 2rem 10px 2rem;
+  box-sizing: border-box;
+  overflow-x: scroll;
+}
+.beauty-section #menu .menu-lists > .cancel {
+  display: block;
+  width: 59px;
+  border-bottom: 1px solid ghostwhite;
+  cursor: pointer;
+  background: ghostwhite;
+  padding: 0.2rem;
+}
+.beauty-section #menu .menu-lists .cover-cancel {
+  position: relative;
+  width: 59px;
+  height: 52px;
+  background: transparent;
+  top: -41px;
+  cursor: pointer;
+}
+.beauty-section #menu .menu-lists .rotate1 {
+  transform: rotate(-45deg);
+}
+.beauty-section #menu .menu-lists .rotate4 {
+  transform: rotate(45deg) translateY(-4px);
+}
+.beauty-section #menu .mobile {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  gap: 0rem;
+  flex-grow: 0;
+  padding: 0px 30px;
+  box-sizing: border-box;
+  transform: translateX(-100rem);
+  position: absolute;
+  z-index: 8888;
+}
+.beauty-section #menu .mobile::-webkit-scrollbar {
+  width: 2px;
+}
+.beauty-section #menu .mobile::-webkit-scrollbar-thumb {
+  background: orangered;
+}
+@keyframes menu-links {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.beauty-section #menu .mobile > ul {
+  padding: 2px 0;
+  box-sizing: border-box;
+  flex-basis: 100%;
+}
+.beauty-section #menu .mobile > ul #menu-links {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.beauty-section #menu .mobile > ul #menu-links > li {
+  list-style: none;
+  font-weight: 100;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  font-weight: 100;
+  white-space: nowrap;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.beauty-section #menu .mobile > ul #menu-links > li > a {
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+  margin-bottom: 15px;
+}
+.beauty-section #menu .mobile > ul #menu-links > li > a:hover {
+  color: orangered;
+}
+.beauty-section #menu .mobile > ul #menu-links > li:hover {
+  transform: translateX(7px);
+  transition: all 0.3s linear;
+  color: #787777;
+}
+.beauty-section #menu .mobile > ul #menu-links::-webkit-scrollbar {
+  width: 2px;
+}
+.beauty-section #menu .mobile > ul #menu-links::-webkit-scrollbar-thumb {
+  background: #181818;
+}
+.beauty-section .animate {
+  height: -moz-max-content;
+  height: max-content;
+  background: #08323c;
+  overflow: hidden;
+}
+.beauty-section .animate > h1 {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Tusker2;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  animation: infinit 60s linear infinite;
+  transition: animation 0.1s linear;
+  font-weight: 400;
+}
+.beauty-section .animate > h1 > .spin {
+  display: inline-block;
+  animation: spin 10s linear infinite;
+  transition: animation 0.5s linear;
+  width: 40px;
+  height: 46px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes infinit {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-2900px);
+  }
+}
+.beauty-section .footer-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  flex-basis: 100%;
+}
+.beauty-section .footer-wrapper > .footer {
+  width: 100%;
+  height: 100vh;
+  background: #181818;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.beauty-section .footer-wrapper > .footer > .footer1 {
+  flex-basis: 100%;
+  background: #181818;
+}
+.beauty-section .footer-wrapper > .footer .copyright {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  background: #181818;
+  box-sizing: border-box;
+  padding-top: 3rem;
+  padding-bottom: 10rem;
+}
+.beauty-section .footer-wrapper > .footer .copyright > ul > li {
+  margin-bottom: 5px;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+  color: ghostwhite;
+}
+.beauty-section .footer-wrapper > .footer .yearLogo {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  gap: 0px;
+  flex-grow: 1;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+.beauty-section .footer-wrapper > .footer .yearLogo > .year {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: Antonio;
+  letter-spacing: 0px;
+  color: ghostwhite;
+}
+
+@media all and (min-width: 1101px) and (max-width: 1300px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+  }
+}
+@media all and (min-width: 701px) and (max-width: 1100px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=links] > .log {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 2rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 500px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 336px;
+    height: 500px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+    box-sizing: border-box;
+    color: ghostwhite;
+    flex-basis: 100%;
+  }
+  body #section1 .long-sleeve > .sleev-info > span {
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve > .sleev-info p {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    word-spacing: 2px;
+    max-width: 600px;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 4rem;
+    padding-bottom: 5rem;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 700px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: ghostwhite;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 350px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 230px;
+    height: 350px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+  body #section1 .long-sleeve {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: ghostwhite;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    flex-basis: 100%;
+    gap: 0;
+    flex-grow: 0;
+  }
+  body #section1 .long-sleeve > .sleev-info {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+    background: #181818;
+    padding: 5rem 4rem;
+  }
+  body #section1 .long-sleeve .sleev-rows {
+    flex-basis: 100%;
+    padding-left: 0rem;
+    padding-bottom: 0rem;
+  }
+  body #section1 .long-sleeve .sleev-rows .col1 .H-scroll .img {
+    max-width: 100%;
+    height: 600px;
+  }
+  body #section1 .bomber-row .col1 {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 .H-scroll {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price {
+    background: ghostwhite;
+  }
+  body #section1 .bomber-row .col1 > .cloth-name-price > span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+    color: black;
+  }
+  body #menu {
+    width: 100%;
+    height: 100vh;
+  }
+  body #menu .mobile {
+    transform: translateX(-40rem);
+  }
+}
+@media all and (min-width: 0px) and (max-width: 440px) {
+  body #section1 {
+    background: ghostwhite;
+  }
+  body #section1 header .nav-wrapper .cloth-filter {
+    display: none;
+  }
+  body #section1 header .nav-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    flex-basis: 100%;
+    gap: 4px;
+    flex-grow: 0;
+    padding: 0;
+    padding-right: 1rem;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=logo] {
+    display: none;
+  }
+  body #section1 header .nav-wrapper ul[data-nav=menu] li {
+    align-items: flex-start;
+  }
+  body #section1 .steppara-banner {
+    background: url(./assets/beauty/de694d167538475.642afa9f1e236.png) no-repeat center center/cover border-box;
+  }
+  body #section1 .steppara-banner .banner {
+    align-items: flex-end;
+  }
+  body #section1 .steppara-banner .banner > p {
+    max-width: 400px;
+    color: #d4d4dd;
+  }
+  body #section1 #main-content-column .cloth-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5px;
+    justify-content: space-between;
+    padding-left: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 {
+    width: 100%;
+    height: -moz-max-content;
+    height: max-content;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .woman1 > .img {
+    max-width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H-scroll {
+    grid-template-columns: repeat(3, 500px);
+    scroll-padding-inline-start: 0rem;
+    padding-left: 0rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    gap: 1rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman {
+    scroll-padding-inline-start: 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 .H_scroll_woman #women-video22 {
+    width: 200px;
+    height: 300px;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price {
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 0rem;
+  }
+  body #section1 #main-content-column .cloth-section > .col1 > .cloth-name-price > span {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Antonio;
+    letter-spacing: 0px;
+  }
+}
+.pageError > img {
+  position: absolute;
+  z-index: 3;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+  height: 100%;
+}
+.pageError .pagenotfound {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex-basis: 100%;
+  gap: 0rem;
+  flex-grow: 0;
+  align-items: center;
+  background: linear-gradient(1839deg, rgba(0, 0, 0, 0.1725490196), rgba(0, 0, 0, 0.631372549), #000);
+  position: relative;
+  z-index: 333;
+}
+.pageError .pagenotfound > .page-wrapper {
+  flex-basis: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.pageError .pagenotfound > .page-wrapper > h1 {
+  text-align: center;
+  margin: 0;
+  font: normal 400 22rem bloverly;
+  color: rgba(186, 184, 181, 0.9490196078);
+}
+.pageError .pagenotfound > .page-wrapper > p {
+  text-align: center;
+  font-size: 15.2px;
+  font-family: bloverly;
+  line-height: 1.8em;
+  color: rgba(186, 184, 181, 0.9490196078);
+}
+.pageError .pagenotfound > .page-wrapper > p > a {
+  padding: 0.6rem 2rem;
+  box-sizing: border-box;
+  font: normal 200 0.96rem bloverly;
+  border-radius: 13px;
+  border-color: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  color: #d79e78;
+}
+.pageError .pagenotfound > .page-wrapper .first-text {
+  text-transform: uppercase;
+  color: #d79e78;
+}
+.pageError .pagenotfound .footer > p {
+  text-align: center;
+  font-size: 12.7px;
+  font-family: bloverly;
+  line-height: 1.8em;
+  text-transform: uppercase;
+  color: #dedcda;
+}
+
+@media all and (max-width: 440px) and (min-width: 401px) {
+  body .pageError #pagenotfound {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2392156863), rgba(0, 0, 0, 0.831372549), #000);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    flex-basis: 100%;
+    gap: 0rem;
+    flex-grow: 0;
+    align-items: center;
+  }
+  body .pageError #pagenotfound > .page-wrapper {
+    flex-basis: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  body .pageError #pagenotfound > .page-wrapper > h1 {
+    text-align: center;
+    margin: 0;
+    font: normal 400 16rem bloverly;
+  }
+}
+@media all and (max-width: 401px) and (min-width: 0px) {
+  body .pageError #pagenotfound {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2392156863), rgba(0, 0, 0, 0.831372549), #000);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    flex-basis: 100%;
+    gap: 0rem;
+    flex-grow: 0;
+    align-items: center;
+  }
+  body .pageError #pagenotfound > .page-wrapper {
+    flex-basis: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  body .pageError #pagenotfound > .page-wrapper > h1 {
+    text-align: center;
+    margin: 0;
+    font: normal 400 14rem bloverly;
+  }
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,284 @@
+@font-face {
+   font-family:bloverly ;
+   src: url(./fonts/bloverly.otf);
+}
+@font-face {
+   font-family:Antonio ;
+   src: url(./fonts/Antonio-Light.ttf);
+}
+@font-face {
+   font-family:sf ;
+   src: url(./fonts/sf-compact-display-light.otf);
+}
+@font-face {
+   font-family:jerindemo;
+   src: url(./fonts/jerindemo.ttf);
+}
+
+$bg-color: (
+   "Dimblack" : #181818,
+   "white" : ghostwhite,
+   "empty" : transparent,
+   "teal" : teal,
+   "red" : red
+);
+$F-colors: (
+   "Dimblack" : #181818,
+   "lightblack" : #181818a8,
+   "white" : ghostwhite,
+   "lightgrey" : #f8f8ffcd,
+   "red" : red,
+   "empty" : transparent
+);
+
+@mixin F-sizes($size,$name, $space){
+   font-size: $size;
+   color: #181818;
+   text-transform: uppercase;
+   font-family: $name;
+   letter-spacing: $space;
+}
+
+@mixin display-flex($direction,$position, $base, $gap,$grow) {
+   display: flex;
+   justify-content: $position;
+   flex-flow: $direction;
+   flex-basis: $base;
+   gap: $gap;
+   flex-grow: $grow;
+}
+
+@mixin maxwidth($fill,$maxcontent){
+   width: $fill;
+   height: $maxcontent;
+}
+
+@mixin linkdecor{
+   text-decoration: none;
+   color:black;
+}
+
+
+body {
+   padding: 0;
+   margin: 0;
+   @include maxwidth(100%, 1200px);
+   background:map-get($bg-color, "Dimblack" );
+   box-sizing: border-box;
+   position: relative;
+   display: grid;
+   grid-template-columns: 100% 100%;
+   overflow-x: hidden;
+
+   &::-webkit-scrollbar {
+      display: none;
+   }
+}
+
+
+.mobile-menu {
+   display: none
+}
+
+main[id="main_header"]{
+   @include maxwidth(100%,max-content );
+   background: map-get($bg-color, "empty" );
+   box-sizing: border-box;
+   position: fixed;
+   top: 0;
+   bottom: 0;
+
+
+   header[id="header"]{
+      position: relative;
+      @include maxwidth(100%, 100vh);
+      background: map-get($bg-color, "empty" );
+      z-index: 1300;
+
+
+      .header-wrapper{
+         @include maxwidth(100%, max-content);
+         background:map-get($bg-color, "empty" ) ;
+         padding: 1rem 1rem;
+         box-sizing: border-box;
+         position: relative;
+         z-index: 3000;
+      }
+   }
+
+   & > .video-wrapper {
+      @include maxwidth(100%,100% );
+      background: map-get($bg-color,"empty" );
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      user-select: none;
+
+      & > video[id="video"] {
+         position: absolute;
+         @include maxwidth(100%,100% );
+         top: 0;
+         bottom: 0;
+         object-fit: cover;
+         object-position: center;
+         z-index: 1;
+
+      }
+   }
+}
+
+#menu {
+   @include maxwidth(515px, 100vh );
+   background: map-get($bg-color, "white" );
+   box-sizing: border-box;
+   position: fixed;
+   z-index: 199900;
+   transform: translateX(-400rem);
+   display: none;
+   z-index: 1000000;
+
+   @keyframes menu-open{
+      from{
+         opacity: 0;
+      }
+      to{
+         transform: translateX(0);
+         display: block;
+         opacity: 1;
+      }
+   }
+   @keyframes menu-x{
+      0% {
+         opacity: 1;
+      }
+      50%{
+         opacity: 1;
+      }
+      100%{
+         transform: translateX(-40rem);
+         opacity: 0;
+      }
+
+   }
+
+
+
+   .menu-lists {
+      @include maxwidth(100%, max-content );
+      @include display-flex(column nowrap , flex-end,100% ,4px ,1 );
+      align-items: flex-end;
+      padding: 5rem 2rem 10px 2rem;
+      box-sizing: border-box;
+      overflow-x: scroll;
+
+      & > .cancel {
+         display: block;
+         width: 59px;
+         border-bottom: 1px solid black;
+         cursor: pointer;
+         background: black;
+         padding: .20rem;
+      }
+
+      .cover-cancel {
+
+            position: relative;
+            width: 59px;
+            height: 52px;
+            background: map-get($bg-color, "empty" );
+            top: -41px;
+            cursor: pointer;
+
+      }
+      .rotate1 {
+         transform: rotate(-45deg);
+      }
+
+      .rotate4  {
+         transform: rotate(45deg)translateY(-4px);
+      }
+
+
+   }
+   .mobile {
+      @include maxwidth(100%, max-content);
+      background: map-get($bg-color, "white" );
+      @include display-flex(row nowrap , flex-start,100% ,0rem ,0 );
+      padding: 0px 30px;
+      box-sizing: border-box;
+      transform: translateX(-100rem);
+      position: absolute;
+      z-index: 8888;
+
+      &::-webkit-scrollbar {
+         width: 2px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         background: orangered;
+      }
+
+
+      @keyframes menu-links{
+         from{
+            opacity: 0;
+         }
+         to{
+            transform: translateX(0);
+            opacity: 1;
+         }
+      }
+      & > ul {
+         padding: 2px 0;
+         box-sizing: border-box;
+         flex-basis: 100%;
+
+         #menu-links {
+            @include maxwidth(100%, 100vh);
+            overflow-y: scroll;
+            // display: none;
+
+            & > li {
+               list-style: none;
+               font-weight: 100;
+               @include F-sizes(15px,Antonio ,0px);
+               @include linkdecor;
+               font-weight: 100;
+               white-space: nowrap;
+               color: map-get($F-colors,"black");
+               margin-bottom: 15px;
+               cursor: pointer;
+
+               &:hover {
+                  transform: translateX(7px);
+                  transition: all .3s linear;
+                  color: #787777;
+               }
+            }
+            &::-webkit-scrollbar {
+               width: 2px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: map-get($bg-color, "Dimblack" );
+            }
+
+         }
+
+      }
+   }
+
+
+  }
+
+
+
+
+@import "./homePage";
+@import "./WomanPage";
+@import "./MenPage";
+@import "./KidsPage";
+@import "./homeProducts";
+@import "./beautyPage";
+@import "./PagenotFound";
+
+
