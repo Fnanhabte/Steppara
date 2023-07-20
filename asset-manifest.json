@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Steppara/static/css/main.8b1cdac9.css",
-    "main.js": "/Steppara/static/js/main.b3bf0091.js",
+    "main.js": "/Steppara/static/js/main.77586add.js",
     "static/media/steppara-men.mp4": "/Steppara/static/media/steppara-men.a79e296d64cf97ca0d14.mp4",
     "static/media/beauty.mp4": "/Steppara/static/media/beauty.b50175dfe0c501c0d371.mp4",
     "static/media/Banner.mp4": "/Steppara/static/media/Banner.dc98ccd47388e8172743.mp4",
@@ -311,10 +311,10 @@
     "index.html": "/Steppara/index.html",
     "static/media/iconmonstr-briefcase-2.svg": "/Steppara/static/media/iconmonstr-briefcase-2.3c90759d51edd0925cfb.svg",
     "main.8b1cdac9.css.map": "/Steppara/static/css/main.8b1cdac9.css.map",
-    "main.b3bf0091.js.map": "/Steppara/static/js/main.b3bf0091.js.map"
+    "main.77586add.js.map": "/Steppara/static/js/main.77586add.js.map"
   },
   "entrypoints": [
     "static/css/main.8b1cdac9.css",
-    "static/js/main.b3bf0091.js"
+    "static/js/main.77586add.js"
   ]
 }
