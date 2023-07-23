@@ -13,7 +13,7 @@ import PagenotFound from './pages/PagenotFound';
 const router = createBrowserRouter([
 
   {
-    path:"/",
+    path:"/Steppara",
     element:<App />
   },
   {
